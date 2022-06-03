@@ -1,12 +1,8 @@
-# flutter_project_template
-📖 Template for flutter projects using solid_lints, CI for tests and analysis.
+# solid_software_test
+This flutter app is implemented in purpose of Solid Sowtware test task.
+The flutter_project_template is used as a template, which includes solid_lints, CI for tests and analysis.
 
-- Uses latest stable flutter
-- Repo name as your project name
-- Organization from your profile email address or default
 
-# Usage
-1. Press "Use this template" on the menu.
-2. Fill Github form with your new repo name and press "Create repository from template"
-3. Wait for it to be created and set up action is complete. In a couple of minutes, you'll see the flutter project created in your repo once Github Actions are complete.
-4. Clone and code.
+# Functionality
+1. Main screen with the text "Hey there" in the middle of the screen.
+2. By tapping anywhere on the screen, a background color is changing to a randomly generated color (able to generate 16777216 colors using RGB).
