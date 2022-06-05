@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
       body: GestureDetector(
         onTap: _changeBackgroundColor,
         child: ColoredBox(
+          key: const Key('coloredBox'),
           color: _color,
           child: const Center(
             child: Text('Hey there'),

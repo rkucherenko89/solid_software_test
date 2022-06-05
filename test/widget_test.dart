@@ -1,30 +1,41 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:solid_software_test/main.dart';
+import 'package:solid_software_test/pages/home_page.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('The text is "Hey there"', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const Main());
+    await tester.pumpWidget(const MaterialApp(home: HomePage()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that our text is 'Hey there'.
+    expect(find.text('Hey there'), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+  testWidgets('Background color is white', (WidgetTester tester) async {
+    final coloredBox = tester
+        .firstWidget(find.byKey(const ValueKey('coloredBox'))) as ColoredBox;
+
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MaterialApp(home: HomePage()));
+
+    // Verify that our ColoredBox is white.
+    expect(coloredBox.color, Colors.white);
+  });
+
+  testWidgets('Change background color by tap', (WidgetTester tester) async {
+    final coloredBox = tester
+        .firstWidget(find.byKey(const ValueKey('coloredBox'))) as ColoredBox;
+    late Color _currentColor;
+
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MaterialApp(home: HomePage()));
+
+    // Save the current color
+    _currentColor = coloredBox.color;
+
+    // Tap the screen, trigger a frame and verify the color had changed.
+    await tester.tap(find.byType(MaterialApp));
     await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(coloredBox.color, isNot(_currentColor));
   });
 }
