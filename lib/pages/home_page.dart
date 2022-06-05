@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:solid_software_test/utils/random_color_generator.dart';
 
+/// Creates the Main screen of the application.
 class HomePage extends StatefulWidget {
+  /// Basic class constructor with optinal, named field [key].
   const HomePage({Key? key}) : super(key: key);
 
   @override
